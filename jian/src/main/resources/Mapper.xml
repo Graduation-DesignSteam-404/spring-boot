@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="business">
+<!--    查询所有书籍信息-->
+    <select id="SelectAllBook" resultType="com.springboot.jian.pojo.Book">
+        select * from book;
+    </select>
+<!--    添加图书-->
+    <insert id="InsertBook">
+        insert into book(name, author,count)
+        values (#{name},#{author},0);
+    </insert>
+<!--    删除图书-->
+    <delete id="DeleteBook">
+        delete book from book where name=#{name}
+    </delete>
+<!--    查询所有用户信息-->
+    <select id="SelectUser" resultType="com.springboot.jian.pojo.User">
+        select * from user;
+    </select>
+<!--    添加用户-->
+    <insert id="InsertUser">
+        insert into user(createData, name)
+        values (now(),#{name})
+    </insert>
+<!--    修改用户-->
+    <update id="UpdateUser">
+        update user set name=#{newName}
+        where name=#{oldName};
+    </update>
+<!--    删除用户-->
+    <delete id="DeleteUser">
+        delete from user where name=#{name}
+    </delete>
+<!--    借阅图书业务-->
+    <insert id="InsertBorrowing">
+        insert into record(book, time, user, state)
+        values (#{book},now(),#{user},"借阅")
+    </insert>
+<!--    归还图书业务-->
+    <insert id="InsertReturn">
+        insert into record(book, time, user, state)
+        values (#{book},now(),#{user},"归还")
+    </insert>
+<!--    查询所有图书书名-->
+    <select id="SelectBookName" resultType="java.lang.String">
+        select (name) from book;
+    </select>
+<!--    查询所有用户姓名-->
+    <select id="SelectUserName" resultType="java.lang.String">
+        select (name) from user;
+    </select>
+</mapper>
