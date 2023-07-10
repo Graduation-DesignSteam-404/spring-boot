@@ -4,6 +4,7 @@ import com.springboot.jian.service.BorrowingMessage;
 import com.springboot.jian.service.selectAllBookMessage;
 import com.springboot.jian.service.selectAllUserMessage;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,7 +13,7 @@ import java.io.IOException;
 @RestController
 public class borrowing {
     //    添加借阅信息
-    @GetMapping(value = "borrowing")
+    @PostMapping(value = "borrowing")
     public int borrowing(
             @RequestParam String book,
             @RequestParam String user
