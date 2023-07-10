@@ -30,7 +30,7 @@ public class borrowing {
 //                判断用户是否存在
                 for (int j=0;j<selectAllUserMessage.selectAllUser().size();j++){
                     if(selectAllUserMessage.selectAllUser().get(j)==user){
-                        result = borrowingMessage.Borrowing("book", "user");
+                        result = borrowingMessage.Borrowing(book, user);
                     }else {
                         result=-2;
                     }
