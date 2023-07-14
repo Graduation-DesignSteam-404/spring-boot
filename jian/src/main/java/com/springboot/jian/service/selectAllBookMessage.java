@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 //查询所有图书书名
 public class selectAllBookMessage {
-    public List<Object> selectAllBook() throws IOException {
+    public static List<Object> selectAllBook() throws IOException {
         // 用于接收数据
         List<Object> arrayList = new ArrayList<>();
         // 创建 SqlSessionFactoryBuilder 对象

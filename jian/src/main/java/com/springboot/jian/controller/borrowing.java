@@ -16,26 +16,36 @@ public class borrowing {
             @RequestParam String book,
             @RequestParam String user
     ) throws IOException {
+        boolean bookMessage = false;
+        boolean userMessage = false;
         int result = 0;
 //        这三个是三大金刚
         BorrowingMessage borrowingMessage = new BorrowingMessage();
-        selectAllBookMessage selectAllBookMessage = new selectAllBookMessage();
         selectAllUserMessage selectAllUserMessage = new selectAllUserMessage();
 
 //        判断图书是否存在
-        for (int i = 0; i < selectAllBookMessage.selectAllBook().size(); i++) {
-            if (selectAllBookMessage.selectAllBook().get(i) == book) {
-//                判断用户是否存在
-                for (int j = 0; j < selectAllUserMessage.selectAllUser().size(); j++) {
-                    if (selectAllUserMessage.selectAllUser().get(j) == user) {
-                        result = borrowingMessage.Borrowing(book, user);
-                    } else {
-                        result = -2;
-                    }
-                }
-            } else {
-                result = -1;
+        for (int i = 0; i < com.springboot.jian.service.selectAllBookMessage.selectAllBook().size(); i++) {
+            if (com.springboot.jian.service.selectAllBookMessage.selectAllBook().get(i).equals(book)) {
+                bookMessage=true;
+                break;
             }
+        }
+//        判断用户是否存在
+        for (int j = 0; j < selectAllUserMessage.selectAllUser().size(); j++) {
+            if (selectAllUserMessage.selectAllUser().get(j) == user) {
+                borrowingMessage.Borrowing(book, user);
+                userMessage=true;
+                break;
+            }
+        }
+        if(!bookMessage){
+            result=-1;
+        }
+        if(!userMessage){
+            result=-2;
+        }
+        if(bookMessage && userMessage){
+            result=1;
         }
         return result;
     }
