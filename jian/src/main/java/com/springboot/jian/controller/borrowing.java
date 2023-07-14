@@ -32,7 +32,7 @@ public class borrowing {
         }
 //        判断用户是否存在
         for (int j = 0; j < selectAllUserMessage.selectAllUser().size(); j++) {
-            if (selectAllUserMessage.selectAllUser().get(j) == user) {
+            if (selectAllUserMessage.selectAllUser().get(j).equals(user)) {
                 borrowingMessage.Borrowing(book, user);
                 userMessage=true;
                 break;
