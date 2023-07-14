@@ -52,4 +52,8 @@
     <select id="SelectUserName" resultType="java.lang.String">
         select (name) from user;
     </select>
+<!--    查询借阅记录-->
+    <select id="SelectRecord" resultType="com.springboot.jian.pojo.BorrowingInformation">
+        select * from record;
+    </select>
 </mapper>
