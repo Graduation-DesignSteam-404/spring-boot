@@ -9,8 +9,8 @@
     </select>
 <!--    添加图书-->
     <insert id="InsertBook">
-        insert into book(name, author,count)
-        values (#{name},#{author},0);
+        insert into book(name, author)
+        values (#{name},#{author});
     </insert>
 <!--    删除图书-->
     <delete id="DeleteBook">
